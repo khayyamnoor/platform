@@ -1,6 +1,6 @@
 # 0003 — CI: GitHub Actions (typecheck + test + lint)
 
-- **Status**: IN-REVIEW
+- **Status**: DONE
 - **Type**: AFK
 - **Blocked-by**: 0002
 - **Slice**: wedge-1-cinematic-director
