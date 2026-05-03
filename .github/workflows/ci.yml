@@ -12,6 +12,9 @@ concurrency:
 
 env:
   TURBO_TELEMETRY_DISABLED: "1"
+  # Opt in to Node.js 24 runtime for actions ahead of GitHub's 2026-06-02
+  # forced cutover. Remove once all referenced action majors ship native v24.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   typecheck:
