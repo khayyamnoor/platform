@@ -1,0 +1,41 @@
+{
+  "name": "@platform-legacy/cinematic-ai-video-director",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/App.tsx",
+  "types": "./src/App.tsx",
+  "exports": {
+    ".": {
+      "types": "./src/App.tsx",
+      "default": "./src/App.tsx"
+    },
+    "./gateway-context": {
+      "types": "./src/gateway-context.tsx",
+      "default": "./src/gateway-context.tsx"
+    },
+    "./styles.css": "./src/index.css"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "pnpm -w exec biome check apps/legacy/cinematic-ai-video-director/src",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@platform/gemini-gateway": "workspace:^",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "happy-dom": "^15.11.6",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  }
+}

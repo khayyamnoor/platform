@@ -163,6 +163,8 @@ export async function clientForRequest(
             const callPromise = ai.models.generateContent({
               model: req.model,
               contents: req.contents,
+              // biome-ignore lint/suspicious/noExplicitAny: pass-through to SDK
+              config: req.config as any,
             });
             const timeoutPromise = new Promise<never>((_, reject) => {
               timer = setTimeout(() => reject(new GatewayTimeout(timeoutMs)), timeoutMs);

@@ -1,6 +1,6 @@
 # 0016 — apps/legacy/cinematic-ai-video-director: wrap-first port
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0014, 0015
 - **Slice**: wedge-1-cinematic-director

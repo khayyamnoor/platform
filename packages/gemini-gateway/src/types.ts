@@ -4,10 +4,16 @@ export type ModelId = "gemini-2.5-pro";
  * Mirrors `@google/genai`'s `GenerateContentParameters` for the v1 single-string
  * use case (the cinematic director's only mode). When future wedges need
  * multi-turn `Content[]`, widen `contents` to `string | Content[]`.
+ *
+ * `config` is pass-through (responseMimeType / responseSchema / etc) — the
+ * gateway forwards it to the SDK without inspection. Typed as `unknown` here
+ * so consumers can use the SDK's full schema shape without forcing
+ * @google/genai imports outside `clientForRequest.ts`.
  */
 export type GenerateContentReq = {
   model: ModelId;
   contents: string;
+  config?: unknown;
 };
 
 export type EstimateResult = {

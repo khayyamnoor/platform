@@ -7,7 +7,18 @@
       "**/.next",
       "**/.turbo",
       "**/coverage",
-      "Apps/**"
+      "Apps/4in1-studios-app/**",
+      "Apps/ai-clone-avatar/**",
+      "Apps/cinematic-ai-video-director/**",
+      "Apps/dreamframe-video-studio/**",
+      "Apps/dress-models-ai/**",
+      "Apps/hissene-contract-classifier-(done)/**",
+      "Apps/intellifeasible---sophie's-business-analysis-assistant-(done)/**",
+      "Apps/logo-ideator/**",
+      "Apps/lollys-product-shoot-app-(-done) (1)/**",
+      "Apps/lumina-architect-ai-best-inetrior-3d-video-(done)/**",
+      "Apps/minutes-of-meeting-audio-transcriber-(too-custom-(edit-template))/**",
+      "Apps/stylematchai/**"
     ]
   },
   "formatter": {
@@ -45,7 +56,9 @@
   },
   "overrides": [
     {
-      "include": ["apps/legacy/**"],
+      "include": ["apps/legacy/**", "Apps/legacy/**"],
+      "formatter": { "enabled": false },
+      "organizeImports": { "enabled": false },
       "linter": {
         "rules": {
           "recommended": false,
