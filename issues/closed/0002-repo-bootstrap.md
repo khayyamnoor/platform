@@ -1,6 +1,6 @@
 # 0002 — Repo bootstrap (Turborepo + pnpm + tooling)
 
-- **Status**: IN-REVIEW
+- **Status**: DONE
 - **Type**: AFK
 - **Blocked-by**: none
 - **Slice**: wedge-1-cinematic-director

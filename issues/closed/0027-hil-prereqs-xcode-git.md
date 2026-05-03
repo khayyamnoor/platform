@@ -1,6 +1,6 @@
 # 0027 — HIL pre-req: accept Xcode license so `git` works
 
-- **Status**: TODO
+- **Status**: DONE
 - **Type**: HIL
 - **Blocked-by**: none
 - **Slice**: wedge-1-cinematic-director
