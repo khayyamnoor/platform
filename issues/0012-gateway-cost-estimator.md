@@ -1,6 +1,6 @@
 # 0012 — gemini-gateway: cost estimator for gemini-2.5-pro text gen
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0002
 - **Slice**: wedge-1-cinematic-director

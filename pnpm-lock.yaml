@@ -96,6 +96,10 @@ importers:
         version: 2.1.8(@types/node@22.19.17)(lightningcss@1.32.0)
 
   packages/gemini-gateway:
+    dependencies:
+      gpt-tokenizer:
+        specifier: ^3.4.0
+        version: 3.4.0
     devDependencies:
       typescript:
         specifier: 5.7.2
@@ -1341,6 +1345,9 @@ packages:
   get-tsconfig@4.14.0:
     resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
 
+  gpt-tokenizer@3.4.0:
+    resolution: {integrity: sha512-wxFLnhIXTDjYebd9A9pGl3e31ZpSypbpIJSOswbgop5jLte/AsZVDvjlbEuVFlsqZixVKqbcoNmRlFDf6pz/UQ==}
+
   is-arrayish@0.3.4:
     resolution: {integrity: sha512-m6UrgzFVUYawGBh1dUsWR5M2Clqic9RVXC/9f8ceNlv2IcO9j9J/z8UoCLPqtsPBFNzEpfR3xftohbfqDx8EQA==}
 
@@ -2538,6 +2545,8 @@ snapshots:
   get-tsconfig@4.14.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
+
+  gpt-tokenizer@3.4.0: {}
 
   is-arrayish@0.3.4:
     optional: true
