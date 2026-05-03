@@ -1,6 +1,6 @@
 # 0007 — Clerk auth integration
 
-- **Status**: TODO
+- **Status**: IN-PROGRESS
 - **Type**: HIL
 - **Blocked-by**: 0002, 0006
 - **Slice**: wedge-1-cinematic-director
