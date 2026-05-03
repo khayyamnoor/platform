@@ -45,6 +45,25 @@ export async function insertWallet(db: AnyPgDatabase, values: NewWallet): Promis
   await db.insert(wallets).values(values);
 }
 
+/**
+ * Provision a fresh wallet for a new user with the slice-1 trial defaults
+ * (FREE plan, TRIAL state, 1000 free credits). Thin wrapper around
+ * insertWallet — kept as a separate export so apps/web's first-signin path
+ * doesn't need to know the magic-number defaults inline.
+ */
+export async function createWallet(db: AnyPgDatabase, args: { userId: string }): Promise<Wallet> {
+  await db.insert(wallets).values({
+    userId: args.userId,
+    plan: "FREE",
+    state: "TRIAL",
+    creditsRemaining: 1000,
+  });
+  const wallet = await getWallet(db, args.userId);
+  if (!wallet)
+    throw new Error(`createWallet: insert succeeded but wallet missing for ${args.userId}`);
+  return wallet;
+}
+
 // --- ledger_entries (append-only: no update/delete helpers) -----------------
 
 export async function insertLedgerEntry(db: AnyPgDatabase, values: NewLedgerEntry): Promise<void> {

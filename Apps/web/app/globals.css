@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/*
+ * Pull in Coinbase tokens from packages/ui. Tailwind v4 picks up the
+ * @theme block and exposes the tokens as CSS variables + utility classes.
+ * Update the source in packages/ui/src/styles.css; this import propagates.
+ */
+@import "@platform/ui/src/styles.css";
+
+/* Ensure Tailwind scans the workspace ui package so its class names are
+ * not tree-shaken out of the production CSS bundle. */
+@source "../../../packages/ui/src/components/**/*.tsx";
+@source "../../../apps/legacy/cinematic-ai-video-director/src/**/*.{tsx,ts}";
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}

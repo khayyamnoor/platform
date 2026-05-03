@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { ReactNode } from "react";
 import { coinbaseAppearance } from "./clerk-appearance";
+import "./globals.css";
 
 export const metadata = {
   title: "Platform",

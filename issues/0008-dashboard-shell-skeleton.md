@@ -1,6 +1,6 @@
 # 0008 — Dashboard shell + credit-balance pill (FIRST TRACEABLE BULLET)
 
-- **Status**: TODO
+- **Status**: IN-PROGRESS
 - **Type**: AFK
 - **Blocked-by**: 0006, 0007, 0009
 - **Slice**: wedge-1-cinematic-director
