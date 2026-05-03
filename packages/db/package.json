@@ -5,6 +5,24 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./testing": {
+      "types": "./src/test/setup.ts",
+      "default": "./src/test/setup.ts"
+    }
+  },
+  "peerDependencies": {
+    "@electric-sql/pglite": "^0.4.5"
+  },
+  "peerDependenciesMeta": {
+    "@electric-sql/pglite": {
+      "optional": true
+    }
+  },
   "scripts": {
     "build": "tsc --noEmit",
     "lint": "biome check src",

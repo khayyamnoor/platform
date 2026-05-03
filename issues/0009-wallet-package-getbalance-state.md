@@ -1,6 +1,6 @@
 # 0009 — wallet package: getBalance + state machine types
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0004
 - **Slice**: wedge-1-cinematic-director
