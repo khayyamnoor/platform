@@ -1,0 +1,6 @@
+{
+  "name": "StyleMatchAI",
+  "description": "Transform any input image to match the visual style, composition, and quality of a reference image using Gemini image generation models.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

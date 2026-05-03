@@ -1,0 +1,7 @@
+{
+  "name": "Minutes Of Meeting Audio Transcriber (too CUSTOM (EDIT TEMPLATE))",
+  "description": "A powerful speech-to-text application powered by Gemini 2.5 Flash. Record your voice and get instant, accurate transcriptions.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

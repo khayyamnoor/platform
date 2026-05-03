@@ -1,0 +1,8 @@
+{
+  "name": "IntelliFeasible - Sophie's Business Analysis Assistant (DONE)",
+  "description": "A sophisticated feasibility study assistant that guides entrepreneurs through a structured 10-point analysis to evaluate business viability.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}

@@ -1,0 +1,6 @@
+{
+  "name": "DreamFrame Video Studio",
+  "description": "An AI-powered video generator that creates cinematic 10-20 second videos from your photos and prompts using Google Veo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

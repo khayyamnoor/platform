@@ -1,0 +1,6 @@
+{
+  "name": "Cinematic AI Video Director",
+  "description": "Analyze and design cinematic video generation prompts and storyboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

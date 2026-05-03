@@ -1,0 +1,5 @@
+{
+  "name": "Hissene Contract Classifier (DONE)",
+  "description": "An AI-powered contract analysis tool that extracts structured data, summaries, and classifications from OCR contract text using the Gemini API.",
+  "requestFramePermissions": []
+}

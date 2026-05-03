@@ -1,0 +1,17 @@
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-sleek-bg: #0A0A0B;
+  --color-sleek-sidebar: #0D0D0E;
+  --color-sleek-preview: #050505;
+  --color-sleek-card: #18181B;
+  --color-sleek-border: #27272A;
+  --color-sleek-border-alt: #3F3F46;
+  --color-sleek-text: #F4F4F5;
+  --color-sleek-text-muted: #71717A;
+  --color-sleek-text-dim: #A1A1AA;
+  --color-sleek-accent: #3B82F6;
+}
+
+@import "tailwindcss";
