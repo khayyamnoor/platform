@@ -28,7 +28,8 @@
           "level": "error",
           "options": {
             "paths": {
-              "@platform/wallet/internal-byok": "BYOK plaintext decryption is package-private. Importable only from `@platform/gemini-gateway`. If you need a Gemini API key, route the call through the gateway."
+              "@platform/wallet/internal-byok": "BYOK plaintext decryption is package-private. Importable only from `packages/gemini-gateway/src/clientForRequest.ts`.",
+              "@google/genai": "All Gemini calls must go through the gateway. Importable only from `packages/gemini-gateway/src/clientForRequest.ts`."
             }
           }
         }
@@ -55,7 +56,7 @@
       }
     },
     {
-      "include": ["packages/gemini-gateway/**"],
+      "include": ["**/clientForRequest.ts"],
       "linter": {
         "rules": {
           "nursery": {

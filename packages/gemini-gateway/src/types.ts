@@ -1,8 +1,13 @@
 export type ModelId = "gemini-2.5-pro";
 
+/**
+ * Mirrors `@google/genai`'s `GenerateContentParameters` for the v1 single-string
+ * use case (the cinematic director's only mode). When future wedges need
+ * multi-turn `Content[]`, widen `contents` to `string | Content[]`.
+ */
 export type GenerateContentReq = {
   model: ModelId;
-  prompt: string;
+  contents: string;
 };
 
 export type EstimateResult = {

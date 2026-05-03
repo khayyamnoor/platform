@@ -12,10 +12,15 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@platform/db": "workspace:^",
+    "msw": "^2.14.2",
     "typescript": "5.7.2",
     "vitest": "2.1.8"
   },
   "dependencies": {
+    "@google/genai": "^1.51.0",
+    "@platform/wallet": "workspace:^",
+    "drizzle-orm": "^0.45.2",
     "gpt-tokenizer": "^3.4.0"
   }
 }

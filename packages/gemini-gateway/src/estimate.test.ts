@@ -6,8 +6,8 @@ import { MODEL_REGISTRY, RETAIL_MARKUP, USD_PER_CREDIT_RETAIL } from "./models.j
 import type { GenerateContentReq } from "./types.js";
 
 describe("estimate", () => {
-  test("empty prompt → minimum 1 credit (we never charge 0 for a real call attempt)", () => {
-    const result = estimate({ model: "gemini-2.5-pro", prompt: "" });
+  test("empty contents → minimum 1 credit (we never charge 0 for a real call attempt)", () => {
+    const result = estimate({ model: "gemini-2.5-pro", contents: "" });
     expect(result.credits).toBe(1);
     expect(result.rawUsd).toBe(0);
   });
@@ -17,19 +17,19 @@ describe("estimate", () => {
       estimate({
         // biome-ignore lint/suspicious/noExplicitAny: testing the runtime guard
         model: "gemini-fake-model" as any,
-        prompt: "anything",
+        contents: "anything",
       } satisfies Partial<GenerateContentReq> as GenerateContentReq),
     ).toThrow(UnknownModel);
   });
 
-  test("gemini-2.5-pro: 500-token prompt produces credits matching the formula", () => {
+  test("gemini-2.5-pro: 500-token contents produces credits matching the formula", () => {
     // Build a deterministic 500-token prompt.
     const filler = "The quick brown fox jumps over the lazy dog. ";
-    let prompt = "";
-    while (encode(prompt + filler).length < 500) prompt += filler;
-    while (encode(prompt).length > 500) prompt = prompt.slice(0, -1);
-    while (encode(prompt).length < 500) prompt += "x";
-    const inputTokens = encode(prompt).length;
+    let contents = "";
+    while (encode(contents + filler).length < 500) contents += filler;
+    while (encode(contents).length > 500) contents = contents.slice(0, -1);
+    while (encode(contents).length < 500) contents += "x";
+    const inputTokens = encode(contents).length;
     expect(inputTokens).toBe(500);
 
     const rates = MODEL_REGISTRY["gemini-2.5-pro"];
@@ -40,7 +40,7 @@ describe("estimate", () => {
       Math.ceil((rawUsd * RETAIL_MARKUP) / USD_PER_CREDIT_RETAIL),
     );
 
-    const result = estimate({ model: "gemini-2.5-pro", prompt });
+    const result = estimate({ model: "gemini-2.5-pro", contents });
 
     expect(result.credits).toBe(expectedCredits);
     expect(result.rawUsd).toBeCloseTo(rawUsd, 12);
@@ -50,7 +50,7 @@ describe("estimate", () => {
   test("estimator is pure: same input → same output across many calls", () => {
     const req: GenerateContentReq = {
       model: "gemini-2.5-pro",
-      prompt: "Write a 30-shot list for a noir detective scene set in a rain-soaked Tokyo alley.",
+      contents: "Write a 30-shot list for a noir detective scene set in a rain-soaked Tokyo alley.",
     };
     const first = estimate(req);
     for (let i = 0; i < 50; i++) {
@@ -61,22 +61,22 @@ describe("estimate", () => {
     }
   });
 
-  test("credits scale monotonically with prompt length", () => {
-    const short = estimate({ model: "gemini-2.5-pro", prompt: "Hi" });
+  test("credits scale monotonically with contents length", () => {
+    const short = estimate({ model: "gemini-2.5-pro", contents: "Hi" });
     const medium = estimate({
       model: "gemini-2.5-pro",
-      prompt: "Generate a structured JSON shot list with 30 detailed shots.".repeat(5),
+      contents: "Generate a structured JSON shot list with 30 detailed shots.".repeat(5),
     });
     const long = estimate({
       model: "gemini-2.5-pro",
-      prompt: "Generate a structured JSON shot list with 30 detailed shots.".repeat(50),
+      contents: "Generate a structured JSON shot list with 30 detailed shots.".repeat(50),
     });
     expect(long.credits).toBeGreaterThan(medium.credits);
     expect(medium.credits).toBeGreaterThanOrEqual(short.credits);
   });
 
   test("assumptions array describes the heuristics used", () => {
-    const result = estimate({ model: "gemini-2.5-pro", prompt: "anything" });
+    const result = estimate({ model: "gemini-2.5-pro", contents: "anything" });
     expect(result.assumptions.some((a) => a.toLowerCase().includes("token"))).toBe(true);
     expect(
       result.assumptions.some((a) => a.toLowerCase().includes("markup") || a.includes("×")),
