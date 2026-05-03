@@ -1,6 +1,6 @@
 # 0015 — app-registry: static manifest with cinematic entry
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0002
 - **Slice**: wedge-1-cinematic-director
