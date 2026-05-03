@@ -1,6 +1,6 @@
 # 0028 — CI: bump GitHub Actions to Node.js 24 runtime
 
-- **Status**: IN-REVIEW
+- **Status**: DONE
 - **Type**: AFK
 - **Blocked-by**: 0003
 - **Slice**: wedge-1-cinematic-director
