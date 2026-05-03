@@ -13,7 +13,9 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "format": "biome format --write .",
-    "format:check": "biome format ."
+    "format:check": "biome format .",
+    "db:generate": "pnpm --filter @platform/db db:generate",
+    "db:migrate": "pnpm --filter @platform/db db:migrate"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

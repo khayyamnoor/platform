@@ -1,6 +1,6 @@
 # 0004 — db package: Drizzle setup + `wallets` table
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0002
 - **Slice**: wedge-1-cinematic-director
@@ -15,7 +15,7 @@ A working Drizzle setup against Neon Postgres with the `wallets` table migrated 
 - `pnpm db:migrate` script (uses `drizzle-kit`).
 - Neon connection wired via `DATABASE_URL` env var; documented in `.env.example`.
 - One typed query helper: `getWallet(db, userId)`.
-- Test DB setup (Vitest global setup) using `pg-mem` or a Neon branch — pick `pg-mem` for v1 (faster, no network).
+- Test DB setup (Vitest global setup) using `pg-mem` or a Neon branch — ~~pick `pg-mem` for v1 (faster, no network)~~. **Deviation**: implemented with `@electric-sql/pglite` instead. `pg-mem@3.0.14` is incompatible with `drizzle-orm@0.45+` — Drizzle's node-postgres adapter attaches a `types.getTypeParser` to every query and uses `rowMode: "array"` for SELECTs; pg-mem rejects both. PGlite is a real Postgres compiled to WASM, also in-memory and no-network, with first-class Drizzle support. Same DX, slower per-test (~600ms vs ~10ms) but trivially correct.
 
 ## Scope (out)
 - `ledger_entries`, `auth_tokens`, `app_runs`, `billing_events` tables → issue 0005.

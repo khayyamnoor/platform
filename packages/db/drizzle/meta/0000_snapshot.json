@@ -1,0 +1,139 @@
+{
+  "id": "445ced12-7830-4a86-a742-7c2e12e87bbd",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.wallets": {
+      "name": "wallets",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plan": {
+          "name": "plan",
+          "type": "wallet_plan",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'FREE'"
+        },
+        "state": {
+          "name": "state",
+          "type": "wallet_state",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'TRIAL'"
+        },
+        "credits_remaining": {
+          "name": "credits_remaining",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "lifetime_platform_key_credits_consumed": {
+          "name": "lifetime_platform_key_credits_consumed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "byok_key_encrypted": {
+          "name": "byok_key_encrypted",
+          "type": "bytea",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "byok_data_key_encrypted": {
+          "name": "byok_data_key_encrypted",
+          "type": "bytea",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "wallets_user_id_unique": {
+          "name": "wallets_user_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "user_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "credits_remaining_non_negative": {
+          "name": "credits_remaining_non_negative",
+          "value": "\"wallets\".\"credits_remaining\" >= 0"
+        },
+        "lifetime_platform_key_credits_consumed_non_negative": {
+          "name": "lifetime_platform_key_credits_consumed_non_negative",
+          "value": "\"wallets\".\"lifetime_platform_key_credits_consumed\" >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.wallet_plan": {
+      "name": "wallet_plan",
+      "schema": "public",
+      "values": [
+        "FREE",
+        "STARTER_30",
+        "PRO_60",
+        "MAX_90"
+      ]
+    },
+    "public.wallet_state": {
+      "name": "wallet_state",
+      "schema": "public",
+      "values": [
+        "TRIAL",
+        "SUBSCRIBED_PLATFORM_KEY",
+        "SUBSCRIBED_USER_KEY",
+        "EXHAUSTED"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
