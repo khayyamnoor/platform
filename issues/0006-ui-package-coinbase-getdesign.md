@@ -1,6 +1,6 @@
 # 0006 — ui package: Coinbase getdesign primitives
 
-- **Status**: IN-PROGRESS
+- **Status**: IN-REVIEW
 - **Type**: HIL
 - **Blocked-by**: 0002
 - **Slice**: wedge-1-cinematic-director
