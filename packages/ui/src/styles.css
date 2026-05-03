@@ -1,0 +1,54 @@
+/*
+ * Coinbase design tokens, sourced from packages/ui/DESIGN.md (getdesign).
+ * Imported by apps/web's globals.css; consumed by Tailwind v4's @theme.
+ */
+@theme {
+  /* Brand */
+  --color-primary: #0052ff;
+  --color-primary-active: #003ecc;
+  --color-primary-disabled: #a8b8cc;
+
+  /* Ink (foregrounds on light surfaces) */
+  --color-ink: #0a0b0d;
+  --color-body: #5b616e;
+  --color-body-strong: #0a0b0d;
+  --color-muted: #7c828a;
+  --color-muted-soft: #a8acb3;
+
+  /* Hairlines / dividers */
+  --color-hairline: #dee1e6;
+  --color-hairline-soft: #eef0f3;
+
+  /* Surfaces (light mode default) */
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f7f7;
+  --color-surface-card: #ffffff;
+  --color-surface-strong: #eef0f3;
+
+  /* Surfaces (dark editorial heroes) */
+  --color-surface-dark: #0a0b0d;
+  --color-surface-dark-elevated: #16181c;
+
+  /* Foregrounds on coloured surfaces */
+  --color-on-primary: #ffffff;
+  --color-on-dark: #ffffff;
+  --color-on-dark-soft: #a8acb3;
+
+  /* Semantic (markets up/down + warning) */
+  --color-semantic-up: #05b169;
+  --color-semantic-down: #cf202f;
+  --color-accent-yellow: #f4b000;
+
+  /* Type families. Coinbase Display is paid; system fallback is fine. */
+  --font-display: "Coinbase Display", -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-sans: "Coinbase Sans", -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+
+  /* Radius. Coinbase aesthetic is mostly square; keep this small. */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+}
