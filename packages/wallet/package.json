@@ -5,6 +5,16 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./internal-byok": {
+      "types": "./src/internal-byok.ts",
+      "default": "./src/internal-byok.ts"
+    }
+  },
   "scripts": {
     "build": "tsc --noEmit",
     "lint": "biome check src",

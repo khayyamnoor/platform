@@ -22,6 +22,16 @@
       "recommended": true,
       "suspicious": {
         "noConsoleLog": "warn"
+      },
+      "nursery": {
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "@platform/wallet/internal-byok": "BYOK plaintext decryption is package-private. Importable only from `@platform/gemini-gateway`. If you need a Gemini API key, route the call through the gateway."
+            }
+          }
+        }
       }
     }
   },
@@ -41,6 +51,16 @@
           "style": { "useImportType": "off" },
           "suspicious": { "noConsoleLog": "off" },
           "correctness": { "useExhaustiveDependencies": "off" }
+        }
+      }
+    },
+    {
+      "include": ["packages/gemini-gateway/**"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noRestrictedImports": "off"
+          }
         }
       }
     }

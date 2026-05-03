@@ -1,6 +1,6 @@
 # 0011 — wallet package: BYOK key add/remove + encryption + ADR
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0010
 - **Slice**: wedge-1-cinematic-director
