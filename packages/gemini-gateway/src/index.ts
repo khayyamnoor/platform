@@ -1,4 +1,6 @@
 export {
+  ByokInvalid,
+  ByokRequired,
   clientForRequest,
   DuplicateGatewayRequest,
   GatewayTimeout,

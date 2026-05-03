@@ -1,6 +1,6 @@
 # 0014 — gemini-gateway: BYOK key routing
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0011, 0013
 - **Slice**: wedge-1-cinematic-director
