@@ -1,6 +1,17 @@
+export { authorize, type AuthorizeArgs } from "./authorize.js";
+export { commit, type CommitArgs } from "./commit.js";
 export { WALLET_CONSTANTS } from "./constants.js";
-export { InvalidWalletTransition, WalletNotFound } from "./errors.js";
+export {
+  AuthTokenNotFound,
+  CapReached,
+  InsufficientCredits,
+  InvalidWalletTransition,
+  TokenNotActive,
+  WalletNotFound,
+} from "./errors.js";
+export { expireHolds } from "./expireHolds.js";
 export { getBalance } from "./getBalance.js";
+export { rollback } from "./rollback.js";
 export { transition } from "./transition.js";
 export type {
   Balance,

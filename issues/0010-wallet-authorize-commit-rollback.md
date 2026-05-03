@@ -1,6 +1,6 @@
 # 0010 — wallet package: authorize / commit / rollback
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0005, 0009
 - **Slice**: wedge-1-cinematic-director
