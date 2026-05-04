@@ -53,6 +53,17 @@ export default function App() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Live credit cost — recomputed on every prompt change. estimate() is pure
+  // and tokenization is fast (cl100k via gpt-tokenizer); no debounce needed.
+  const estimateCredits = prompt.trim()
+    ? gateway.estimate({ model: "gemini-2.5-pro", contents: prompt }).credits
+    : 0;
+
+  const insufficient = gateway.credits < estimateCredits;
+  const exhausted = gateway.state === "EXHAUSTED";
+  const disableGenerate =
+    isGenerating || !prompt.trim() || insufficient || exhausted;
+
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
 
@@ -175,7 +186,14 @@ export default function App() {
 
               <button
                 onClick={handleGenerate}
-                disabled={isGenerating || !prompt.trim()}
+                disabled={disableGenerate}
+                title={
+                  exhausted
+                    ? "Out of platform credits. Add your own Gemini key in Settings to keep generating."
+                    : insufficient
+                      ? `Need ${estimateCredits} credits, ${gateway.credits} available.`
+                      : undefined
+                }
                 className="w-full mt-6 bg-[#D4AF37] hover:bg-[#F1D592] text-black disabled:opacity-50 disabled:hover:bg-[#D4AF37] font-semibold text-[10px] tracking-widest uppercase rounded-sm px-4 py-4 flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 {isGenerating ? (
@@ -186,7 +204,7 @@ export default function App() {
                 ) : (
                   <>
                     <Sparkles className="w-4 h-4" />
-                    Render Canvas Design
+                    Render Canvas Design{estimateCredits > 0 ? ` (~${estimateCredits} credits)` : ""}
                   </>
                 )}
               </button>

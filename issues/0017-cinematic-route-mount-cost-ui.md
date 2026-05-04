@@ -1,6 +1,6 @@
 # 0017 — apps/web: cinematic route + useGateway hook + cost UI + toast (TRACEABLE BULLET 2)
 
-- **Status**: TODO
+- **Status**: IN-REVIEW
 - **Type**: AFK
 - **Blocked-by**: 0006, 0008, 0013, 0016
 - **Slice**: wedge-1-cinematic-director

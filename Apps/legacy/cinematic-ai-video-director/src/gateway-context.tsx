@@ -2,22 +2,33 @@
 
 import { type ReactNode, createContext, useContext } from "react";
 
+export type GatewayState =
+  | "TRIAL"
+  | "SUBSCRIBED_PLATFORM_KEY"
+  | "SUBSCRIBED_USER_KEY"
+  | "EXHAUSTED";
+
+export type GenerateReq = { model: string; contents: string; config?: unknown };
+
 /**
- * Minimal shape the legacy app needs from the gateway. Mirrors the part of
- * `@platform/gemini-gateway`'s GatewayClient surface this app actually uses.
- *
- * Note: the actual gateway returned by `clientForRequest()` extends this —
- * we narrow here so the legacy app doesn't need to import @platform/gemini-
- * gateway types directly.
+ * The shape the legacy app needs from the gateway. apps/web wires the
+ * concrete value (a fetch-backed proxy that POSTs to the gateway API
+ * route + a pure tokenizer-based estimate). The wallet `state` is read
+ * by the legacy app to surface "out of credits" / "BYOK required" UI.
  */
 export type GatewayLike = {
   models: {
-    generateContent: (req: {
-      model: string;
-      contents: string;
-      config?: unknown;
-    }) => Promise<{ text?: string }>;
+    generateContent: (req: GenerateReq) => Promise<{ text?: string }>;
   };
+  /**
+   * Pure pre-call estimator. Returns the credit cost the wallet would
+   * authorise for `req`. Safe in client components; no network.
+   */
+  estimate: (req: GenerateReq) => { credits: number; rawUsd: number };
+  /** Current wallet state so the app can disable Generate when EXHAUSTED. */
+  state: GatewayState;
+  /** Current credit balance — used to disable Generate when balance < estimate. */
+  credits: number;
 };
 
 const GatewayContext = createContext<GatewayLike | null>(null);
@@ -32,12 +43,6 @@ export function GatewayProvider({
   return <GatewayContext.Provider value={value}>{children}</GatewayContext.Provider>;
 }
 
-/**
- * Replaces the legacy app's `new GoogleGenAI({apiKey})` + .models.generateContent
- * pair. The actual implementation is wired by `apps/web` (issue 0017) which
- * fetches a request-scoped gateway via clientForRequest(...) and provides it
- * here. Tests mock this hook directly.
- */
 export function useGateway(): GatewayLike {
   const ctx = useContext(GatewayContext);
   if (ctx === null) {

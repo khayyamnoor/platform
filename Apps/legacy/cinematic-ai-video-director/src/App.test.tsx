@@ -9,6 +9,9 @@ const mockGateway: GatewayLike = {
       text: JSON.stringify({ analysisSummary: "ok", videos: [] }),
     }),
   },
+  estimate: () => ({ credits: 12, rawUsd: 0.005 }),
+  state: "TRIAL",
+  credits: 1000,
 };
 
 describe("cinematic-ai-video-director (ported)", () => {

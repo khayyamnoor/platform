@@ -72,9 +72,18 @@ importers:
       '@clerk/nextjs':
         specifier: ^7.3.0
         version: 7.3.0(next@15.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@platform-legacy/cinematic-ai-video-director':
+        specifier: workspace:^
+        version: link:../legacy/cinematic-ai-video-director
+      '@platform/app-registry':
+        specifier: workspace:^
+        version: link:../../packages/app-registry
       '@platform/db':
         specifier: workspace:^
         version: link:../../packages/db
+      '@platform/gemini-gateway':
+        specifier: workspace:^
+        version: link:../../packages/gemini-gateway
       '@platform/ui':
         specifier: workspace:^
         version: link:../../packages/ui

@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.3.0",
+    "@platform-legacy/cinematic-ai-video-director": "workspace:^",
+    "@platform/app-registry": "workspace:^",
     "@platform/db": "workspace:^",
+    "@platform/gemini-gateway": "workspace:^",
     "@platform/ui": "workspace:^",
     "@platform/wallet": "workspace:^",
     "next": "15.1.4",

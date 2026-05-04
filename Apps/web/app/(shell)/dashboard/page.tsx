@@ -1,6 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@platform/ui";
+import { listApps } from "@platform/app-registry";
+import { AppCard } from "../../../components/app-card";
 
 export default function DashboardPage() {
+  const apps = listApps();
   return (
     <div className="space-y-6">
       <div>
@@ -8,25 +10,15 @@ export default function DashboardPage() {
           Apps
         </h1>
         <p className="mt-1 text-sm text-[var(--color-body)]">
-          Pick an app to get started. New apps are added every slice.
+          Pick an app to get started. New apps land every slice.
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>No apps yet</CardTitle>
-          <CardDescription>
-            Slice 1 will land cinematic-ai-video-director here. Until then, this page is the
-            traceable bullet for auth → db → ui — your wallet has been provisioned and your plan +
-            credit pill render in the header.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-xs uppercase tracking-widest text-[var(--color-muted)]">
-            Issue 0017 mounts the cinematic director route into this grid.
-          </p>
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {apps.map((app) => (
+          <AppCard key={app.id} app={app} />
+        ))}
+      </div>
     </div>
   );
 }
